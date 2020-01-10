@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Home from './pages/Home';
+import Apts from './pages/Apts';
+import SingleApt from './pages/SingleApt';
+import Error from './pages/Error';
+import Navbar from './components/Navbar';
+import { Route, Switch } from 'react-router-dom';
+import ScrollToTop from './scrollTop'
+import Footer from './components/Footer'
+import Contact from './pages/Contact'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <ScrollToTop />
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/apts' exact component={Apts} />
+        <Route path='/apts/:id' component={SingleApt} />
+        <Route path='/contact' component={Contact} />
+        <Route component={Error} />
+      </Switch>
+      <Footer/>
     </div>
   );
 }
